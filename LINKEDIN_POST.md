@@ -34,7 +34,10 @@ Two things surprised me:
 
 → Communication is in 69-85% of postings in every role. Everyone expects it, so it won't set you apart. The hard skills will.
 
-I built the whole thing myself: Python to collect and clean the postings, SQL to calculate demand (CTEs and window functions), and Power BI plus a small web dashboard so you can pick a role and see its top 3.
+How I built it:
+🐍 Python to collect, clean and classify the postings
+🗄️ SQL to model the data and calculate demand per role (CTEs, window functions, a star schema)
+📈 Power BI for the interactive report, plus a small web dashboard anyone can open
 
 A fair warning: postings show what employers ask for, not what people actually have, and I detect skills by keywords, so unusual wording can slip through. The two data sources agree closely, though (correlation 0.98-0.99).
 
