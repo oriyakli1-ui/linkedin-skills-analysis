@@ -5,11 +5,11 @@ Tip: LinkedIn shows only the first ~3 lines before "see more", so the opening ca
 
 ---
 
-I'm an Industrial Engineering & Management student, and three roles keep coming up in every conversation about jobs on campus: Product Manager, Project Manager and Data Analyst.
+I read 8,473 job postings. The #1 skill for Data Analysts isn't Python. It's SQL, and it appears about 10x more often than in the other two roles.
 
-So I asked a simple question: what do employers actually ask for in these three roles?
+I'm an Industrial Engineering & Management student, and three roles keep coming up in every conversation about jobs on campus: Product Manager, Project Manager and Data Analyst. I wanted to know what to learn to raise my chances at them.
 
-Instead of guessing, I counted. I analysed 8,473 real job postings (LinkedIn, Indeed, ZipRecruiter) and measured how often each skill shows up.
+So instead of guessing, I counted. The postings come from LinkedIn, Indeed and ZipRecruiter, and I measured how often each skill shows up.
 
 The top 3 per role:
 
@@ -30,7 +30,7 @@ The top 3 per role:
 
 Two things surprised me:
 
-→ SQL appears about 10x more often in Data Analyst postings than in the other two roles. It's not just popular, it defines the job.
+→ SQL is not just popular, it defines the Data Analyst job. Python shows up in 43% of those postings, SQL in 67%.
 
 → Communication is in 69-85% of postings in every role. Everyone expects it, so it won't set you apart. The hard skills will.
 
