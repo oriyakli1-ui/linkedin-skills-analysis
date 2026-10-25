@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "n2",
   "position": {
-    "x": 854,
-    "y": 158,
+    "x": 852.14693713462543,
+    "y": 146.82725003768908,
     "z": 8,
-    "width": 386,
-    "height": 92,
+    "height": 102.91629675538954,
+    "width": 385.5930585101928,
     "tabOrder": 8
   },
   "visual": {
@@ -249,7 +249,22 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "407c871ab0bd9e52ca60",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_postings"
+              }
+            },
+            "Property": "Postings"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

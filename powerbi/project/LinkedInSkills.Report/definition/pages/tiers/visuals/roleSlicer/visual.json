@@ -123,7 +123,7 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "t",
+                    "Name": "d",
                     "Entity": "dim_role",
                     "Type": 0
                   }
@@ -137,7 +137,7 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "t"
+                                  "Source": "d"
                                 }
                               },
                               "Property": "role"
@@ -205,5 +205,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1b816edf3326b67d0b17",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_role"
+              }
+            },
+            "Property": "role"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

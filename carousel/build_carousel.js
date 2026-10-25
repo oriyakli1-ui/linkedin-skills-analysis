@@ -10,7 +10,7 @@ const get = (role, skill) => rows.find((r) => r.role === role && r.skill === ski
 const top = (role, type, n) => rows.filter((r) => r.role === role && r.type === type).sort((a, b) => a.rank - b.rank).slice(0, n);
 const pct = (v) => `${Math.round(v * 100)}%`;
 const ROLES = { "Product Manager": "#8B7BFF", "Project Manager": "#19D3B5", "Data Analyst": "#FF9A3C" };
-const TOTAL = 8473, N = 8;
+const TOTAL = 8473, N = 10;
 
 const css = `
 *{box-sizing:border-box;margin:0;padding:0}
@@ -69,8 +69,30 @@ slides.push(page(7, `<div class="kick">WHO NEEDS WHAT</div>
 <h2>Same market, different skill sets</h2>
 <table><tr><th></th>${Object.keys(ROLES).map((r) => `<th style="color:${ROLES[r]}">${r.replace(" ", "<br>")}</th>`).join("")}</tr>
 ${HS.map(([s]) => `<tr><td class="s">${s}</td>${Object.keys(ROLES).map((r) => { const d = (get(r, s) || { demand: 0 }).demand; return `<td class="c" style="background:${heat(d)}">${pct(d)}</td>`; }).join("")}</tr>`).join("")}</table>`, "#8B7BFF", "#FF5C8A"));
-// 8 cta
-slides.push(page(8, `<div class="kick">THE TAKEAWAY</div>
+// 8 how it was built (SQL)
+const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const sqlSnippet = esc(`WITH with_skill AS (
+  SELECT p.role, m.skill, COUNT(*) AS n_with
+  FROM postings p
+  JOIN job_skill_mined m ON m.job_id = p.job_id
+  GROUP BY p.role, m.skill)
+SELECT role, skill,
+  1.0 * n_with / n_postings AS demand_pct,
+  ROW_NUMBER() OVER (PARTITION BY role
+    ORDER BY demand_pct DESC) AS skill_rank
+FROM with_skill ...`);
+slides.push(page(8, `<div class="kick">HOW I BUILT IT</div>
+<h2>SQL does the counting</h2>
+<pre style="background:#121936;border-radius:24px;padding:34px 38px;margin-top:34px;font:27px/1.5 Consolas,monospace;color:#CFE3FF">${sqlSnippet}</pre>
+<p class="sub" style="margin-top:34px">CTEs and window functions turn <b class="hl">${TOTAL.toLocaleString()}</b> postings and <b class="hl">78,850</b> skill mentions into one ranked table per role.</p>`, "#19D3B5", "#8B7BFF"));
+// 9 explore it yourself
+slides.push(page(9, `<div class="kick">EXPLORE IT YOURSELF</div>
+<h2>Pick a role, see your top 3</h2>
+<div class="card" style="background:#1C2444;color:#F2F5FF;margin-top:40px;font-size:36px;line-height:1.5"><b class="hl">Interactive dashboard</b><br>oriyakli1-ui.github.io/linkedin-skills-analysis</div>
+<div class="card" style="background:#1C2444;color:#F2F5FF;margin-top:30px;font-size:36px;line-height:1.5"><b class="hl">Code, SQL, Power BI project</b><br>github.com/oriyakli1-ui/linkedin-skills-analysis</div>
+<p class="sub" style="margin-top:40px">Python + SQL + Power BI. Open source, no personal data.</p>`, "#8B7BFF", "#19D3B5"));
+// 10 cta
+slides.push(page(10, `<div class="kick">THE TAKEAWAY</div>
 <h2>Learn what is <span class="hl" style="white-space:nowrap">role-defining</span>, not just popular</h2>
 <p class="sub">${["Product Manager|Product Roadmap, Backlog, Product Strategy", "Project Manager|Budget Management, Reporting, Risk, PM Certification", "Data Analyst|SQL, Data Visualization, Statistics, Python"].map((x) => { const [r, s] = x.split("|"); return `<span style="color:${ROLES[r]};font-weight:800">${r}:</span> ${s}<br><br>`; }).join("")}</p>
 <div class="card" style="background:#FFD166;margin-top:20px;font-size:40px;font-weight:800;line-height:1.2">Follow for more data-backed career advice.<div style="font-size:26px;font-weight:600;margin-top:10px">Sources: LinkedIn 2022-25, Indeed/ZipRecruiter 2024. Aggregated, no personal data.</div></div>`, "#FFD166", "#8B7BFF", ""));

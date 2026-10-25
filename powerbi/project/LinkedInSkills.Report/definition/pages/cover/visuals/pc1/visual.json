@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "pc1",
   "position": {
     "x": 447,
     "y": 342,
     "z": 10,
-    "width": 386,
     "height": 140,
+    "width": 386,
     "tabOrder": 10
   },
   "visual": {
@@ -249,7 +249,22 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "faaaed4e828bc414b246",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "skill_scores"
+              }
+            },
+            "Property": "Hard Pct 1"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

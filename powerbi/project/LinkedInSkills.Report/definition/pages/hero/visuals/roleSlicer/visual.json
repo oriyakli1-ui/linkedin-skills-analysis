@@ -123,7 +123,7 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "t",
+                    "Name": "d",
                     "Entity": "dim_role",
                     "Type": 0
                   }
@@ -137,7 +137,7 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "t"
+                                  "Source": "d"
                                 }
                               },
                               "Property": "role"
@@ -148,7 +148,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Product Manager'"
+                                "Value": "'Project Manager'"
                               }
                             }
                           ]
@@ -205,5 +205,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "baf3c4d087cfa5403159",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_role"
+              }
+            },
+            "Property": "role"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

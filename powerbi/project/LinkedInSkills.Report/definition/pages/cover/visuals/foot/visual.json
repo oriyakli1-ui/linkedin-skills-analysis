@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "foot",
   "position": {
     "x": 40,
     "y": 676,
     "z": 19,
-    "width": 1200,
     "height": 28,
+    "width": 1200,
     "tabOrder": 19
   },
   "visual": {
@@ -19,13 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Source: aggregated public job postings (LinkedIn 2022-25, Indeed/ZipRecruiter 2024). No personal data.",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI",
-                      "fontSize": "10pt",
-                      "fontWeight": "normal",
-                      "color": "#9AA6C8"
-                    }
+                    "value": ""
                   }
                 ],
                 "horizontalTextAlignment": "center"

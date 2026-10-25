@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "rank2",
   "position": {
-    "x": 447,
-    "y": 166,
+    "x": 447.34283656342654,
+    "y": 149.5716846178328,
     "z": 7,
-    "width": 386,
-    "height": 34,
+    "height": 50.77203973265884,
+    "width": 385.5930585101928,
     "tabOrder": 7
   },
   "visual": {
@@ -181,5 +181,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f5f6d696380b95e91335",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "skill_scores"
+              }
+            },
+            "Property": "Hard Rank Label 2"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

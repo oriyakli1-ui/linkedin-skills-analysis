@@ -463,7 +463,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       },
       {
         "name": "maxd",
@@ -511,7 +512,50 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "eae909712857095c51c5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "skill_scores"
+              }
+            },
+            "Property": "skill"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f9adcfffb19df5e88865",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_role"
+              }
+            },
+            "Property": "role"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "11d67e6fb057935e5d11",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "skill_scores"
+              }
+            },
+            "Property": "Demand Heat"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "tips",
   "position": {
     "x": 820,
     "y": 100,
     "z": 2,
-    "width": 420,
     "height": 600,
+    "width": 420,
     "tabOrder": 2
   },
   "visual": {
@@ -21,14 +21,13 @@
                   {
                     "value": "HOW TO READ IT",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI",
                       "fontSize": "13pt",
-                      "fontWeight": "bold",
-                      "color": "#FFD166"
+                      "color": "#ffd166"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -37,12 +36,10 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "6pt",
-                      "fontWeight": "normal",
-                      "color": "#F2F5FF"
+                      "color": "#f2f5ff"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -51,12 +48,10 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "12pt",
-                      "fontWeight": "normal",
-                      "color": "#F2F5FF"
+                      "color": "#f2f5ff"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -65,26 +60,23 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "8pt",
-                      "fontWeight": "normal",
-                      "color": "#F2F5FF"
+                      "color": "#f2f5ff"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
                   {
                     "value": "SQL",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI",
                       "fontSize": "14pt",
-                      "fontWeight": "bold",
-                      "color": "#FF9A3C"
+                      "color": "#ff9a3c"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -93,12 +85,10 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "12pt",
-                      "fontWeight": "normal",
-                      "color": "#9AA6C8"
+                      "color": "#9aa6c8"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -107,26 +97,23 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "8pt",
-                      "fontWeight": "normal",
-                      "color": "#F2F5FF"
+                      "color": "#f2f5ff"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
                   {
                     "value": "Product Roadmap",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI",
                       "fontSize": "14pt",
-                      "fontWeight": "bold",
-                      "color": "#8B7BFF"
+                      "color": "#8b7bff"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -135,12 +122,10 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "12pt",
-                      "fontWeight": "normal",
-                      "color": "#9AA6C8"
+                      "color": "#9aa6c8"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -149,26 +134,23 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "8pt",
-                      "fontWeight": "normal",
-                      "color": "#F2F5FF"
+                      "color": "#f2f5ff"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
                   {
                     "value": "Budget Management",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI",
                       "fontSize": "14pt",
-                      "fontWeight": "bold",
-                      "color": "#19D3B5"
+                      "color": "#19d3b5"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -177,12 +159,10 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "12pt",
-                      "fontWeight": "normal",
-                      "color": "#9AA6C8"
+                      "color": "#9aa6c8"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -191,26 +171,23 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "8pt",
-                      "fontWeight": "normal",
-                      "color": "#F2F5FF"
+                      "color": "#f2f5ff"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
                   {
                     "value": "Communication",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Segoe UI",
                       "fontSize": "14pt",
-                      "fontWeight": "bold",
-                      "color": "#FF5C8A"
+                      "color": "#ff5c8a"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               },
               {
                 "textRuns": [
@@ -219,12 +196,10 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "12pt",
-                      "fontWeight": "normal",
-                      "color": "#9AA6C8"
+                      "color": "#9aa6c8"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

@@ -21,8 +21,17 @@ table{border-collapse:separate;border-spacing:8px;margin-top:20px;width:100%}
 th{font-size:26px;color:#9AA6C8;font-weight:700;padding:8px}
 td.s{font-size:30px;font-weight:600;padding:8px 0}
 td.c{height:64px;text-align:center;font-size:32px;font-weight:800;border-radius:16px;width:190px}
-</style><body><div class="glow" style="width:700px;height:700px;background:#FFD166;top:-250px;right:-250px"></div><div class="glow" style="width:620px;height:620px;background:#8B7BFF;bottom:-260px;left:-240px"></div>
-<div class="wrap"><div class="top"><span>JOB MARKET DATA</span><span>8 / 8</span></div><div class="kick">THE TAKEAWAY</div>
-<h2>Learn what is <span class="hl" style="white-space:nowrap">role-defining</span>, not just popular</h2>
-<p class="sub"><span style="color:#8B7BFF;font-weight:800">Product Manager:</span> Product Roadmap, Backlog, Product Strategy<br><br><span style="color:#19D3B5;font-weight:800">Project Manager:</span> Budget Management, Reporting, Risk, PM Certification<br><br><span style="color:#FF9A3C;font-weight:800">Data Analyst:</span> SQL, Data Visualization, Statistics, Python<br><br></p>
-<div class="card" style="background:#FFD166;margin-top:20px;font-size:40px;font-weight:800;line-height:1.2">Follow for more data-backed career advice.<div style="font-size:26px;font-weight:600;margin-top:10px">Sources: LinkedIn 2022-25, Indeed/ZipRecruiter 2024. Aggregated, no personal data.</div></div><div class="foot"><span></span></div></div></body>
+</style><body><div class="glow" style="width:700px;height:700px;background:#19D3B5;top:-250px;right:-250px"></div><div class="glow" style="width:620px;height:620px;background:#8B7BFF;bottom:-260px;left:-240px"></div>
+<div class="wrap"><div class="top"><span>JOB MARKET DATA</span><span>8 / 10</span></div><div class="kick">HOW I BUILT IT</div>
+<h2>SQL does the counting</h2>
+<pre style="background:#121936;border-radius:24px;padding:34px 38px;margin-top:34px;font:27px/1.5 Consolas,monospace;color:#CFE3FF">WITH with_skill AS (
+  SELECT p.role, m.skill, COUNT(*) AS n_with
+  FROM postings p
+  JOIN job_skill_mined m ON m.job_id = p.job_id
+  GROUP BY p.role, m.skill)
+SELECT role, skill,
+  1.0 * n_with / n_postings AS demand_pct,
+  ROW_NUMBER() OVER (PARTITION BY role
+    ORDER BY demand_pct DESC) AS skill_rank
+FROM with_skill ...</pre>
+<p class="sub" style="margin-top:34px">CTEs and window functions turn <b class="hl">8,473</b> postings and <b class="hl">78,850</b> skill mentions into one ranked table per role.</p><div class="foot"><span>Based on 8,473 real job postings</span><span>Swipe →</span></div></div></body>
