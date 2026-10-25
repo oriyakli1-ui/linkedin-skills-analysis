@@ -41,13 +41,13 @@ Soft skills (communication, stakeholders) appear in nearly every posting, so I l
 How I built it:
 • Python to collect, clean and classify the postings
 • SQL (CTEs, window functions) to calculate demand and compare roles
-• [OPTION A, if the Power BI report is built: Power BI for the interactive dashboard]
-• [OPTION B, if you only publish the web dashboard: an interactive dashboard where you pick a role and see its top 3]
+• Power BI for the interactive report (project file in the repo)
+• An interactive web dashboard where you pick a role and see its top 3
 
 Limits worth knowing: postings show what employers ask for, not what people have. Skills are detected by keywords, so unusual wording can be missed. The two data sources agree closely (correlation 0.98 to 0.99).
 
-Pick the role you want and see your top 3: [dashboard link]
-Code and method: [GitHub link]
+Pick the role you want and see your top 3: https://oriyakli1-ui.github.io/linkedin-skills-analysis/
+Code and method: https://github.com/oriyakli1-ui/linkedin-skills-analysis
 
 What skill do you think is missing from the list?
 
@@ -91,8 +91,8 @@ What skill do you think is missing from the list?
 איך בניתי את זה:
 • Python לאיסוף, ניקוי וסיווג המשרות
 • SQL (CTE ופונקציות חלון) לחישוב ביקוש והשוואה בין התפקידים
-• [אפשרות א', אם בנית את דוח ה-Power BI: Power BI לדשבורד האינטראקטיבי]
-• [אפשרות ב', אם מפרסמים רק את הדשבורד באינטרנט: דשבורד אינטראקטיבי שבו בוחרים תפקיד ורואים את שלושת הכישורים שלו]
+• Power BI לדוח אינטראקטיבי (קובץ הפרויקט בריפו)
+• דשבורד אינטראקטיבי באינטרנט שבו בוחרים תפקיד ורואים את שלושת הכישורים שלו
 
 מגבלות שחשוב להכיר: משרות מראות מה מעסיקים מבקשים, לא מה יש לאנשים. זיהוי הכישורים מבוסס על מילות מפתח, ולכן ניסוחים חריגים עלולים להתפספס. שני מקורות הנתונים מסכימים ביניהם בצורה גבוהה (מתאם 0.98 עד 0.99).
 
