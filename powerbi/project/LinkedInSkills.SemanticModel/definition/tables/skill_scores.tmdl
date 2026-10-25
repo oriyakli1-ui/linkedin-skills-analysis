@@ -1,0 +1,192 @@
+table skill_scores
+	lineageTag: 1acd78da-0563-4965-887a-a521618b2cf5
+
+	measure 'Skill Demand %' = AVERAGE ( skill_scores[demand_pct] )
+		formatString: 0.0%
+		lineageTag: 0647faa2-4880-4467-a314-0a2f7896e1c3
+
+	measure 'Role Specificity' = AVERAGE ( skill_scores[specificity_lift] )
+		formatString: 0.0
+		lineageTag: ee6d20d6-1dce-41e4-93b3-4842f1a0aee9
+
+	measure 'Dynamic Title' = "Top 3 skills to become a " & SELECTEDVALUE ( dim_role[role], "..." )
+		lineageTag: f6715b22-e518-421c-97ce-b3d1ac1c5f54
+
+	measure 'Demand Label' = "Asked in " & FORMAT ( [Skill Demand %], "0%" ) & " of postings"
+		lineageTag: 0ab95c45-a9ce-4841-9e9f-2cdff22f8eb7
+
+	measure 'Specificity Label' = VAR s = [Role Specificity] RETURN IF ( ISBLANK ( s ), "", FORMAT ( s, "0.0" ) & "x more common than in the other two roles" )
+		lineageTag: 2d75b206-cdc0-4770-bb4a-75e91efda67c
+
+	measure 'Hard Skill 1' = CALCULATE ( SELECTEDVALUE ( skill_scores[skill] ), skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 1 )
+		lineageTag: b810d777-7231-49ae-b935-d72f93e2f754
+
+	measure 'Hard Demand Label 1' = "Asked in " & FORMAT ( CALCULATE ( [Skill Demand %], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 1 ), "0%" ) & " of postings"
+		lineageTag: 2309e955-699c-4cee-be26-666299e4a731
+
+	measure 'Hard Specificity Label 1' = CALCULATE ( [Specificity Label], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 1 )
+		lineageTag: 2173cc58-8f4b-4f3b-b9ad-3d464ed9cac4
+
+	measure 'Hard Skill 2' = CALCULATE ( SELECTEDVALUE ( skill_scores[skill] ), skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 2 )
+		lineageTag: 6484224c-16ca-4c8e-be9c-bae49c9ac3a8
+
+	measure 'Hard Demand Label 2' = "Asked in " & FORMAT ( CALCULATE ( [Skill Demand %], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 2 ), "0%" ) & " of postings"
+		lineageTag: 3cf2a51a-caa0-4afc-a873-e3e6d15b111d
+
+	measure 'Hard Specificity Label 2' = CALCULATE ( [Specificity Label], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 2 )
+		lineageTag: 608637a5-61bc-4cd5-a75a-d0e8c116732c
+
+	measure 'Hard Skill 3' = CALCULATE ( SELECTEDVALUE ( skill_scores[skill] ), skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 3 )
+		lineageTag: 57ea3865-f62d-49b9-9637-a95cbc9625e5
+
+	measure 'Hard Demand Label 3' = "Asked in " & FORMAT ( CALCULATE ( [Skill Demand %], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 3 ), "0%" ) & " of postings"
+		lineageTag: 3997368c-9873-4e2e-9eb6-3f756a4e22e3
+
+	measure 'Hard Specificity Label 3' = CALCULATE ( [Specificity Label], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 3 )
+		lineageTag: 77c9f0b7-f9b9-421e-b18b-4a0267ce93d7
+
+	measure 'Hard Rank Label 1' = "TOP HARD SKILL #1"
+		lineageTag: 15a24c69-a156-4a9c-943d-4e458c7af29a
+
+	measure 'Hard Rank Label 2' = "TOP HARD SKILL #2"
+		lineageTag: aba66ece-b82b-4a09-b7d7-774aaab925a8
+
+	measure 'Hard Rank Label 3' = "TOP HARD SKILL #3"
+		lineageTag: 986c716a-e138-405f-b4bd-5a448b3f26a9
+
+	measure 'Role Color' = SWITCH ( SELECTEDVALUE ( dim_role[role] ), "Product Manager", "#8B7BFF", "Project Manager", "#19D3B5", "Data Analyst", "#FF9A3C", "#8B7BFF" )
+		lineageTag: 70be489b-72fa-45a1-bd0d-585a3a2d8fe2
+
+	measure 'Demand Heat' = COALESCE ( [Skill Demand %], 0 )
+		formatString: 0%
+		lineageTag: 4117ba5d-7b00-4b25-924a-96f39f621174
+
+	measure 'Heat Color' = VAR d = [Demand Heat] RETURN SWITCH ( TRUE (), d >= 0.65, "#FF5C8A", d >= 0.5, "#E04FD0", d >= 0.3, "#7B5CFF", d >= 0.15, "#3D4FB5", d >= 0.05, "#2B3770", "#1C2444" )
+		lineageTag: 1f6d8a4f-9cb9-4fbb-bd98-c5c4ef5b5d20
+
+	measure 'Max Demand Any Role' = CALCULATE ( MAX ( skill_scores[demand_pct] ), ALL ( skill_scores[role] ) )
+		formatString: 0%
+		lineageTag: 6e3af95b-26a8-493a-bf7b-e69b53501d26
+
+	measure 'Postings With Skill' = SUM ( skill_scores[n_with] )
+		formatString: #,0
+		lineageTag: 96196527-b8da-4d81-90fd-a1c242b729ba
+
+	measure 'Hard Pct 1' = CALCULATE ( [Skill Demand %], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 1 )
+		formatString: 0%
+		lineageTag: fe97c4ce-32ad-4b91-a146-7b1fc244210a
+
+	measure 'Hard Pct 2' = CALCULATE ( [Skill Demand %], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 2 )
+		formatString: 0%
+		lineageTag: 46ba26bc-c7db-467c-8d6f-4a845baea890
+
+	measure 'Hard Pct 3' = CALCULATE ( [Skill Demand %], skill_scores[skill_type] = "Hard", skill_scores[skill_rank] = 3 )
+		formatString: 0%
+		lineageTag: a8513d11-bf8b-4755-b74c-6562ffbf1dae
+
+	measure 'Is Must-have' = IF ( [Skill Demand %] >= 0.25 && [Role Specificity] >= 2.5, 1 )
+		lineageTag: 114bfeb1-2df9-4abd-83b4-f7fa22ccbf8e
+
+	measure 'Is Table Stakes' = IF ( [Skill Demand %] >= 0.25 && [Role Specificity] < 2.5, 1 )
+		lineageTag: 263317b3-8246-4d4e-80d6-0050a6a8699e
+
+	measure 'Is Differentiator' = IF ( [Skill Demand %] >= 0.08 && [Skill Demand %] < 0.25 && [Role Specificity] >= 5, 1 )
+		lineageTag: db18f664-7ee0-43c6-b24d-eccfe806f60b
+
+	measure 'Also Label' = "Then: " & [Hard Skill 2] & "  ·  " & [Hard Skill 3]
+		lineageTag: a7ba7eba-e78f-483a-a89a-1abdccfa9601
+
+	measure 'Demand Data Analyst' = CALCULATE ( [Demand Heat], skill_scores[role] = "Data Analyst" )
+		formatString: 0%
+		lineageTag: 56441d1c-d6af-4c17-a83b-588b70ed8971
+
+	measure 'Color Data Analyst' = VAR d = [Demand Data Analyst] RETURN SWITCH ( TRUE (), d >= 0.65, "#FF5C8A", d >= 0.5, "#E04FD0", d >= 0.3, "#7B5CFF", d >= 0.15, "#3D4FB5", d >= 0.05, "#2B3770", "#1C2444" )
+		lineageTag: 2dacd948-76ae-4e79-8780-8c3dd88d3340
+
+	measure 'Demand Product Manager' = CALCULATE ( [Demand Heat], skill_scores[role] = "Product Manager" )
+		formatString: 0%
+		lineageTag: 932ba927-2dfa-43b1-98fa-66847e8bb51c
+
+	measure 'Color Product Manager' = VAR d = [Demand Product Manager] RETURN SWITCH ( TRUE (), d >= 0.65, "#FF5C8A", d >= 0.5, "#E04FD0", d >= 0.3, "#7B5CFF", d >= 0.15, "#3D4FB5", d >= 0.05, "#2B3770", "#1C2444" )
+		lineageTag: 7eda6484-6f6e-40e7-bc60-2959032d7665
+
+	measure 'Demand Project Manager' = CALCULATE ( [Demand Heat], skill_scores[role] = "Project Manager" )
+		formatString: 0%
+		lineageTag: 213195a8-735c-4af1-bb9b-b1f1cc1c0ed8
+
+	measure 'Color Project Manager' = VAR d = [Demand Project Manager] RETURN SWITCH ( TRUE (), d >= 0.65, "#FF5C8A", d >= 0.5, "#E04FD0", d >= 0.3, "#7B5CFF", d >= 0.15, "#3D4FB5", d >= 0.05, "#2B3770", "#1C2444" )
+		lineageTag: f2557cab-9778-4d4b-b6ec-28e6c48a9a30
+
+	column role
+		dataType: string
+		lineageTag: 066fc069-f75e-4298-8b5a-b127bf481770
+		summarizeBy: none
+		sourceColumn: role
+
+	column skill
+		dataType: string
+		lineageTag: 9ed9cd2d-7b4d-44e2-8141-36de68874a9d
+		summarizeBy: none
+		sourceColumn: skill
+
+	column category
+		dataType: string
+		lineageTag: a3c9204e-2a61-45ea-aad2-3be8a1c153cf
+		summarizeBy: none
+		sourceColumn: category
+
+	column skill_type
+		dataType: string
+		lineageTag: b7d99d81-3d9d-47f7-ab0f-136ea6a16514
+		summarizeBy: none
+		sourceColumn: skill_type
+
+	column n_postings
+		dataType: int64
+		lineageTag: 343c12ac-3ab3-4aac-959e-5c3ff84f672b
+		summarizeBy: none
+		sourceColumn: n_postings
+
+	column n_with
+		dataType: int64
+		lineageTag: ce0a26db-5834-4607-a82b-bed9d808fa24
+		summarizeBy: none
+		sourceColumn: n_with
+
+	column demand_pct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 5f37cc68-7105-44b0-be7d-06c39210f1a1
+		summarizeBy: none
+		sourceColumn: demand_pct
+
+	column specificity_lift
+		dataType: double
+		formatString: 0.0
+		lineageTag: d91836b0-0034-4764-b035-246daff78f79
+		summarizeBy: none
+		sourceColumn: specificity_lift
+
+	column score
+		dataType: double
+		formatString: 0.000
+		lineageTag: e578769e-22ee-4fd5-a9c2-8d29600bd721
+		summarizeBy: none
+		sourceColumn: score
+
+	column skill_rank
+		dataType: int64
+		lineageTag: cfdba906-3c66-478d-a291-d574736f8bd5
+		summarizeBy: none
+		sourceColumn: skill_rank
+
+	partition skill_scores = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "skill_scores.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"role", type text}, {"skill", type text}, {"category", type text}, {"skill_type", type text}, {"n_postings", Int64.Type}, {"n_with", Int64.Type}, {"demand_pct", type number}, {"specificity_lift", type number}, {"score", type number}, {"skill_rank", Int64.Type}}, "en-US")
+				in
+					Typed
+

@@ -1,0 +1,25 @@
+table dim_skill
+	lineageTag: 7a44a8cf-263d-4e95-901a-d50f9073149a
+
+	column skill
+		dataType: string
+		lineageTag: 9f89c0f9-4443-4e09-bbeb-580037f728d9
+		summarizeBy: none
+		sourceColumn: skill
+
+	column category
+		dataType: string
+		lineageTag: 82f3443c-aacd-4b2d-a285-4c8dc48af492
+		summarizeBy: none
+		sourceColumn: category
+
+	partition dim_skill = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dim_skill.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"skill", type text}, {"category", type text}}, "en-US")
+				in
+					Typed
+

@@ -1,0 +1,5 @@
+# raw Kaggle downloads (1.3 GB, third-party licences): re-download, see README
+data/
+__pycache__/
+*.pyc
+.claude/

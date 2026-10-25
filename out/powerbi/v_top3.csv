@@ -1,0 +1,10 @@
+﻿role,skill_rank,skill,category,demand_pct,specificity_lift,score
+Data Analyst,1,SQL,Technical,67.3,10.5,0.673
+Data Analyst,2,Reporting,Delivery,66.7,1.97,0.667
+Data Analyst,3,Data Visualization,Technical,59.0,9.08,0.59
+Product Manager,1,Product Roadmap,Product,70.5,15.62,0.705
+Product Manager,2,Backlog / Prioritization,Product,64.9,3.25,0.649
+Product Manager,3,Product Strategy / GTM,Product,54.7,38.39,0.547
+Project Manager,1,Budget Management,Delivery,56.0,5.43,0.56
+Project Manager,2,Reporting,Delivery,49.4,1.34,0.494
+Project Manager,3,Risk Management,Delivery,47.9,2.03,0.479

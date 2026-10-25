@@ -1,0 +1,38 @@
+table linkedin_skill_stats
+	lineageTag: 39d9f44b-3530-47f0-a439-2174d34c0cb5
+
+	column role
+		dataType: string
+		lineageTag: 89ea78fe-0391-4e8a-8b35-0c53b9e6d003
+		summarizeBy: none
+		sourceColumn: role
+
+	column skill_name
+		dataType: string
+		lineageTag: 69c788b2-02ca-44c7-a51c-b0be5bf145a1
+		summarizeBy: none
+		sourceColumn: skill_name
+
+	column n_with
+		dataType: int64
+		lineageTag: 05894e07-7c80-4d1f-ad03-29b7a083c2e7
+		summarizeBy: none
+		sourceColumn: n_with
+
+	column demand_pct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 8e9184fa-27c7-4fd8-8312-93dcc15719f5
+		summarizeBy: none
+		sourceColumn: demand_pct
+
+	partition linkedin_skill_stats = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "linkedin_skill_stats.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"role", type text}, {"skill_name", type text}, {"n_with", Int64.Type}, {"demand_pct", type number}}, "en-US")
+				in
+					Typed
+

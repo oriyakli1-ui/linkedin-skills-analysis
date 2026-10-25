@@ -1,0 +1,20 @@
+relationship rel_1
+	fromColumn: fact_postings.role
+	toColumn: dim_role.role
+
+relationship rel_2
+	fromColumn: fact_job_skill.job_id
+	toColumn: fact_postings.job_id
+
+relationship rel_3
+	fromColumn: fact_job_skill.skill
+	toColumn: dim_skill.skill
+
+relationship rel_4
+	fromColumn: skill_scores.role
+	toColumn: dim_role.role
+
+relationship rel_5
+	fromColumn: linkedin_skill_stats.role
+	toColumn: dim_role.role
+

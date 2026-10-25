@@ -1,0 +1,207 @@
+<title>Skills Compass</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  /* Layout: one role switch drives a hero answer (3 cards), a ranked bar list, and a plain-language action plan. */
+  :root {
+    --bg: #f2f4f8; --surface: #ffffff; --fg: #141a24; --muted: #5d6676; --line: #dde2ea;
+    --bar-off: #cfd6e2; --accent: #1f5fd6; --accent-ink: #ffffff; --accent-soft: #e4ecfb;
+    --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e131b; --surface: #161d28; --fg: #eef1f6; --muted: #98a2b3; --line: #263041;
+      --bar-off: #2f3b50; --accent-soft: #1b2a47; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e131b; --surface: #161d28; --fg: #eef1f6; --muted: #98a2b3; --line: #263041;
+    --bar-off: #2f3b50; --accent-soft: #1b2a47; color-scheme: dark;
+  }
+  /* one accent per role, set from script */
+  .role-da { --accent: #1f5fd6; --accent-soft: #e4ecfb; }
+  .role-pm { --accent: #c2410c; --accent-soft: #fbe9de; }
+  .role-pj { --accent: #15803d; --accent-soft: #dff3e6; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .role-da { --accent: #6ea0ff; --accent-soft: #1b2a47; --accent-ink: #0e131b; }
+    :root:not([data-theme="light"]) .role-pm { --accent: #ff9a5c; --accent-soft: #3a2316; --accent-ink: #0e131b; }
+    :root:not([data-theme="light"]) .role-pj { --accent: #5fd28a; --accent-soft: #14301f; --accent-ink: #0e131b; }
+  }
+  :root[data-theme="dark"] .role-da { --accent: #6ea0ff; --accent-soft: #1b2a47; --accent-ink: #0e131b; }
+  :root[data-theme="dark"] .role-pm { --accent: #ff9a5c; --accent-soft: #3a2316; --accent-ink: #0e131b; }
+  :root[data-theme="dark"] .role-pj { --accent: #5fd28a; --accent-soft: #14301f; --accent-ink: #0e131b; }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 15px; line-height: 1.5;
+    padding-block: 28px 56px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+  h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  .eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  header { display: flex; flex-direction: column; gap: 14px; }
+  header h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.05; }
+  header p { margin: 0; color: var(--muted); max-width: 62ch; }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tab {
+    font: 600 14px var(--f-body); color: var(--fg); background: var(--surface); border: 1px solid var(--line);
+    padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  }
+  .tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .tab:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .tab .n { font-family: var(--f-mono); font-weight: 500; font-size: 12px; opacity: .75; margin-left: 6px; }
+
+  .hero h2 { font-size: clamp(22px, 3.4vw, 30px); font-weight: 800; margin-bottom: 14px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .card .rank { font-family: var(--f-mono); font-size: 12px; color: var(--accent); font-weight: 500; letter-spacing: .06em; }
+  .card h3 { font-size: 22px; font-weight: 800; line-height: 1.15; }
+  .big { font-family: var(--f-display); font-weight: 800; font-size: 52px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .big small { font-size: 24px; }
+  .card .cap { color: var(--muted); font-size: 13px; margin-top: -4px; }
+  .chip { align-self: flex-start; font-family: var(--f-mono); font-size: 12px; background: var(--accent-soft); color: var(--accent); padding: 4px 8px; border-radius: 6px; }
+
+  section.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  section.panel h2 { font-size: 20px; font-weight: 800; }
+  .sub { color: var(--muted); font-size: 13px; margin-top: -8px; }
+  .row { display: grid; grid-template-columns: minmax(120px, 210px) 1fr auto; align-items: center; gap: 12px; }
+  .row .name { font-size: 14px; min-width: 0; overflow-wrap: anywhere; }
+  .row.top .name { font-weight: 600; }
+  .track { height: 14px; background: color-mix(in srgb, var(--bar-off) 35%, transparent); border-radius: 3px; overflow: hidden; }
+  .fill { height: 100%; background: var(--bar-off); border-radius: 3px; }
+  .row.top .fill { background: var(--accent); }
+  .val { font-family: var(--f-mono); font-size: 13px; font-variant-numeric: tabular-nums; text-align: right; min-width: 6.5em; }
+  .val em { font-style: normal; color: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--muted); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+  .soft { display: flex; flex-wrap: wrap; gap: 10px; }
+  .soft span { font-size: 13px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+  .soft b { font-family: var(--f-mono); font-weight: 500; margin-left: 6px; color: var(--muted); }
+
+  ol.plan { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: s; }
+  ol.plan li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+  ol.plan li::before { counter-reset: none; content: attr(data-n); font-family: var(--f-mono); font-size: 13px; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: var(--accent-ink); }
+  ol.plan strong { display: block; font-family: var(--f-display); font-size: 17px; }
+  ol.plan span { color: var(--muted); }
+
+  footer { color: var(--muted); font-size: 12.5px; display: flex; flex-direction: column; gap: 6px; }
+  footer p { margin: 0; max-width: 90ch; }
+  @media (max-width: 520px) {
+    .row { grid-template-columns: 1fr auto; }
+    .row .track { grid-column: 1 / -1; order: 3; }
+    .big { font-size: 44px; }
+  }
+  @media (prefers-reduced-motion: no-preference) { .fill { transition: width .35s ease; } }
+</style>
+
+<div id="app" class="wrap role-da">
+  <header>
+    <div class="eyebrow">Job-posting analysis · <span id="total"></span> postings</div>
+    <h1>Skills Compass</h1>
+    <p>Pick the job you want. See the three skills that appear in the largest share of its job postings.</p>
+    <div class="tabs" role="tablist" aria-label="Target role" id="tabs"></div>
+  </header>
+
+  <div class="hero">
+    <h2 id="title"></h2>
+    <div class="cards" id="cards"></div>
+  </div>
+
+  <section class="panel">
+    <h2>Top 10 learnable skills</h2>
+    <p class="sub" id="barsub"></p>
+    <div id="bars" style="display:flex;flex-direction:column;gap:9px"></div>
+    <div class="legend"><span><i style="background:var(--accent)"></i>Top 3</span><span><i style="background:var(--bar-off)"></i>Next 7</span><span>Ranked by share of postings that ask for the skill. × = how much more common the skill is in this role than in the other two (a high × means it defines the role; a low × means every role wants it).</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Also expected from everyone</h2>
+    <p class="sub">Soft skills appear in nearly every posting, so they are listed apart and never replace a skill you can study.</p>
+    <div class="soft" id="soft"></div>
+  </section>
+
+  <section class="panel">
+    <h2>What to do next</h2>
+    <ol class="plan" id="plan"></ol>
+  </section>
+
+  <footer>
+    <p id="method"></p>
+    <p>Method: skills are ranked by the share of the role's postings that mention them. The × figure compares that share with the other two roles and is shown for context only. Skills found in fewer than 20 postings are dropped. Skills are detected by keywords in the posting text, so unusual wording can be missed. Postings show what employers ask for, not what people have.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = /*DATA*/;
+const ROLES = [
+  { key: "Data Analyst", cls: "role-da", short: "Data Analyst" },
+  { key: "Product Manager", cls: "role-pm", short: "Product Manager" },
+  { key: "Project Manager", cls: "role-pj", short: "Project Manager" }
+];
+const PLAN = {
+  "Data Analyst": [
+    ["Learn SQL first", "It is asked for in two of every three Data Analyst postings and is about ten times more common here than in product or project roles. Practise joins, window functions and CTEs on a real dataset."],
+    ["Get good at reporting", "Reporting appears in 67% of postings, almost as often as SQL, but every role asks for it (only 2× more common here), so it is expected rather than distinguishing. Build a recurring weekly report in Excel or a BI tool."],
+    ["Pick one BI tool and publish a dashboard", "Data visualization is in 59% of postings. Tableau (38%) and Power BI (34%) are both common, so choose one, build two dashboards from public data and show them. Then add statistics (46%) and Python (44%)."]
+  ],
+  "Product Manager": [
+    ["Build and defend a roadmap", "Product Roadmap is asked for in 71% of postings. Write a one-page roadmap for a product you know, with the reasons behind each priority."],
+    ["Master backlog prioritization", "65% of postings ask for it. Learn one framework (RICE or impact versus effort) and apply it to a real backlog."],
+    ["Learn product strategy and go-to-market", "At 55% demand it is the most role-specific skill of the three (about 38 times more common than in the other roles). User research is rarer (16%) but also strongly tied to this role, so it can set you apart."]
+  ],
+  "Project Manager": [
+    ["Get fluent in budget management", "It leads the list at 56% of postings. Learn to build a project budget, track variance and explain it."],
+    ["Practise reporting and risk management", "Reporting (49%) and risk management (48%) are each asked for in about half of postings. Prepare a status report and a risk register as portfolio pieces."],
+    ["Add a recognised certification", "PM certifications (PMP, PRINCE2, CAPM, Six Sigma) appear in 28% of postings and are almost eight times more common here than in the other roles. MS Project is rarer (14%) but very specific to this role."]
+  ]
+};
+const $ = id => document.getElementById(id);
+const fmt = n => n.toLocaleString("en-US");
+let current = ROLES[0];
+
+function render() {
+  const app = $("app");
+  ROLES.forEach(r => app.classList.remove(r.cls));
+  app.classList.add(current.cls);
+  const d = DATA.skills[current.key];
+  const hard = d.hard;
+  $("title").textContent = "The top 3 skills to become a " + current.short;
+  $("barsub").textContent = "Share of " + current.short + " postings that mention each skill.";
+  $("cards").innerHTML = hard.slice(0, 3).map((s, i) => `
+    <article class="card">
+      <div class="rank">SKILL ${i + 1}</div>
+      <h3>${s.skill}</h3>
+      <div class="big">${Math.round(s.demand)}<small>%</small></div>
+      <div class="cap">of ${current.short} postings ask for it</div>
+      <div class="chip">${s.lift.toFixed(1)}× more common than in the other roles</div>
+    </article>`).join("");
+  $("bars").innerHTML = hard.map((s, i) => `
+    <div class="row ${i < 3 ? "top" : ""}">
+      <div class="name">${s.skill}</div>
+      <div class="track"><div class="fill" style="width:${s.demand}%"></div></div>
+      <div class="val">${s.demand.toFixed(0)}% <em>· ${s.lift.toFixed(1)}×</em></div>
+    </div>`).join("");
+  $("soft").innerHTML = d.soft.map(s => `<span>${s.skill}<b>${Math.round(s.demand)}%</b></span>`).join("");
+  $("plan").innerHTML = PLAN[current.key].map((p, i) => `<li data-n="${i + 1}"><div><strong>${p[0]}</strong><span>${p[1]}</span></div></li>`).join("");
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.key === current.key)));
+}
+const total = Object.values(DATA.postings).reduce((a, b) => a + b, 0);
+$("total").textContent = fmt(total);
+$("method").textContent = "Data: " + fmt(total) + " postings from LinkedIn (2022–2025) and Indeed / ZipRecruiter (2024): " +
+  DATA.sources.map(s => s[0] + " " + fmt(s[1])).join(", ") + ". Skill demand agrees across the two sources (correlation 0.98–0.99 in every role).";
+$("tabs").innerHTML = ROLES.map(r => `<button class="tab" role="tab" data-key="${r.key}">${r.short}</button>`).join("");
+$("tabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  current = ROLES.find(r => r.key === b.dataset.key); render();
+  try { history.replaceState(null, "", "#" + current.cls.slice(5)); } catch (_) {}
+});
+const h = (location.hash || "").slice(1);
+const pre = ROLES.find(r => r.cls === "role-" + h); if (pre) current = pre;
+render();
+</script>

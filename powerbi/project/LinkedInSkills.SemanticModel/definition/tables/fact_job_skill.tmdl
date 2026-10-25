@@ -1,0 +1,32 @@
+table fact_job_skill
+	lineageTag: b8e02479-fd38-4b87-aa4b-22616877a0db
+
+	measure 'Skill Mentions' = COUNTROWS ( fact_job_skill )
+		formatString: #,0
+		lineageTag: deb03ee3-41df-424a-a44a-834926572469
+
+	measure 'Is Top 10 Mention' = IF ( RANKX ( ALL ( fact_job_skill[skill] ), [Skill Mentions], , DESC, Dense ) <= 10, 1 )
+		lineageTag: 57852450-f144-4d5b-87d2-7ab2244e4ed4
+
+	column job_id
+		dataType: string
+		lineageTag: 07fa4cd1-2eca-4e68-b555-7af663f313d6
+		summarizeBy: none
+		sourceColumn: job_id
+
+	column skill
+		dataType: string
+		lineageTag: 95955d1f-090c-4b8a-b2dd-69937a767085
+		summarizeBy: none
+		sourceColumn: skill
+
+	partition fact_job_skill = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "fact_job_skill.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"job_id", type text}, {"skill", type text}}, "en-US")
+				in
+					Typed
+

@@ -1,0 +1,15 @@
+{
+  "name": "Skills Compass",
+  "dataColors": ["#1F6FEB", "#E8590C", "#2B9A66", "#8B8F98", "#B8BEC9", "#F2B134", "#6C5CE7", "#C2255C"],
+  "background": "#FFFFFF",
+  "foreground": "#1B1F24",
+  "tableAccent": "#1F6FEB",
+  "textClasses": {
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 16, "color": "#1B1F24" },
+    "label": { "fontFace": "Segoe UI", "fontSize": 11, "color": "#5B6270" },
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 28, "color": "#1B1F24" }
+  },
+  "visualStyles": {
+    "*": { "*": { "border": [{ "show": false }], "background": [{ "show": false }] } }
+  }
+}

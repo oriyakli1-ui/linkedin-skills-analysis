@@ -1,0 +1,25 @@
+table dim_role
+	lineageTag: 520ea415-d1c7-4264-9192-e1d520f42484
+
+	column role
+		dataType: string
+		lineageTag: 5a915955-19e8-4522-b6bc-f45230bf7b43
+		summarizeBy: none
+		sourceColumn: role
+
+	column role_order
+		dataType: int64
+		lineageTag: 2d493712-6c16-409e-92e1-a3a641efb1fb
+		summarizeBy: none
+		sourceColumn: role_order
+
+	partition dim_role = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dim_role.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"role", type text}, {"role_order", Int64.Type}}, "en-US")
+				in
+					Typed
+

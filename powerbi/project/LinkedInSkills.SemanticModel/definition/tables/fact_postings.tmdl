@@ -1,0 +1,89 @@
+table fact_postings
+	lineageTag: 1ec13137-1550-4895-9477-ad8ed13f7d9a
+
+	measure Postings = DISTINCTCOUNT ( fact_postings[job_id] )
+		formatString: #,0
+		lineageTag: a25bda9c-4573-4777-929b-3bc52f63b6b3
+
+	measure 'Remote Share' = DIVIDE ( CALCULATE ( [Postings], fact_postings[remote_allowed] = 1 ), [Postings] )
+		formatString: 0.0%
+		lineageTag: 3640fcbf-2163-4120-a6ec-0d3b9552c0b5
+
+	measure Companies = DISTINCTCOUNT ( fact_postings[company_name] )
+		formatString: #,0
+		lineageTag: 9c11ad19-a7be-4055-84c1-fa7d1c536034
+
+	measure 'Remote Share (known)' = DIVIDE ( CALCULATE ( COUNTROWS ( fact_postings ), fact_postings[remote_allowed] = 1 ), CALCULATE ( COUNTROWS ( fact_postings ), NOT ISBLANK ( fact_postings[remote_allowed] ) ) )
+		formatString: 0%
+		lineageTag: 81461d78-cb86-4f5f-9870-79ceff2ee0cd
+
+	measure 'Is Top 10 Company' = IF ( RANKX ( ALL ( fact_postings[company_name] ), [Postings], , DESC, Dense ) <= 10, 1 )
+		lineageTag: a5094988-99ca-4e84-88dd-4fb9ea897dfc
+
+	measure 'Is Top 10 Location' = IF ( RANKX ( ALL ( fact_postings[location] ), [Postings], , DESC, Dense ) <= 10, 1 )
+		lineageTag: ba38733a-66c5-4950-b2a6-5255cb35a78b
+
+	column job_id
+		dataType: string
+		lineageTag: 39f73ae7-ec6b-4089-986a-3e285d8d1e6a
+		summarizeBy: none
+		sourceColumn: job_id
+
+	column role
+		dataType: string
+		lineageTag: b0e30201-897e-4ce3-97ed-8f664e601e03
+		summarizeBy: none
+		sourceColumn: role
+
+	column title
+		dataType: string
+		lineageTag: c21ecd26-f534-443a-882a-21e7b29c0e5a
+		summarizeBy: none
+		sourceColumn: title
+
+	column company_name
+		dataType: string
+		lineageTag: 559dcfe6-0114-49af-b569-095b34890327
+		summarizeBy: none
+		sourceColumn: company_name
+
+	column location
+		dataType: string
+		lineageTag: 98aef316-532d-4221-b13a-e8a04ced5300
+		summarizeBy: none
+		sourceColumn: location
+
+	column work_type
+		dataType: string
+		lineageTag: 3c9a1bfb-c0f1-4870-ab46-18b36424054b
+		summarizeBy: none
+		sourceColumn: work_type
+
+	column remote_allowed
+		dataType: double
+		lineageTag: eb1e3feb-1475-4611-9217-b4b5519c8509
+		summarizeBy: none
+		sourceColumn: remote_allowed
+
+	column listed_date
+		dataType: string
+		lineageTag: 71219ec5-d6fb-4f97-86e8-a58dc2adeb2e
+		summarizeBy: none
+		sourceColumn: listed_date
+
+	column source
+		dataType: string
+		lineageTag: 612a101f-a26c-44bd-ac41-09dcdf9efce2
+		summarizeBy: none
+		sourceColumn: source
+
+	partition fact_postings = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "fact_postings.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"job_id", type text}, {"role", type text}, {"title", type text}, {"company_name", type text}, {"location", type text}, {"work_type", type text}, {"remote_allowed", type number}, {"listed_date", type text}, {"source", type text}}, "en-US")
+				in
+					Typed
+

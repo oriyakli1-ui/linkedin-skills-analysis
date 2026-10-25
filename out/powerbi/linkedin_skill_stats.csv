@@ -1,0 +1,89 @@
+﻿role,skill_name,n_with,demand_pct
+Data Analyst,Accounting/Auditing,2,0.0012345679012345679
+Data Analyst,Administrative,7,0.004320987654320987
+Data Analyst,Advertising,5,0.0030864197530864196
+Data Analyst,Analyst,174,0.10740740740740741
+Data Analyst,Business Development,10,0.006172839506172839
+Data Analyst,Consulting,6,0.003703703703703704
+Data Analyst,Customer Service,3,0.001851851851851852
+Data Analyst,Education,1,0.0006172839506172839
+Data Analyst,Engineering,53,0.03271604938271605
+Data Analyst,Finance,13,0.008024691358024692
+Data Analyst,General Business,2,0.0012345679012345679
+Data Analyst,Health Care Provider,2,0.0012345679012345679
+Data Analyst,Human Resources,3,0.001851851851851852
+Data Analyst,Information Technology,342,0.2111111111111111
+Data Analyst,Legal,1,0.0006172839506172839
+Data Analyst,Management,5,0.0030864197530864196
+Data Analyst,Marketing,11,0.006790123456790123
+Data Analyst,Other,25,0.015432098765432098
+Data Analyst,Product Management,2,0.0012345679012345679
+Data Analyst,Project Management,3,0.001851851851851852
+Data Analyst,Quality Assurance,13,0.008024691358024692
+Data Analyst,Research,82,0.050617283950617285
+Data Analyst,Sales,8,0.0049382716049382715
+Data Analyst,Science,1,0.0006172839506172839
+Data Analyst,Strategy/Planning,2,0.0012345679012345679
+Data Analyst,Supply Chain,3,0.001851851851851852
+Product Manager,Accounting/Auditing,2,0.0004269854824935952
+Product Manager,Administrative,9,0.0019214346712211785
+Product Manager,Advertising,1,0.0002134927412467976
+Product Manager,Analyst,15,0.0032023911187019642
+Product Manager,Art/Creative,2,0.0004269854824935952
+Product Manager,Business Development,8,0.0017079419299743809
+Product Manager,Consulting,7,0.0014944491887275832
+Product Manager,Customer Service,4,0.0008539709649871904
+Product Manager,Design,5,0.001067463706233988
+Product Manager,Engineering,33,0.007045260461144321
+Product Manager,Finance,6,0.0012809564474807857
+Product Manager,General Business,1,0.0002134927412467976
+Product Manager,Health Care Provider,3,0.0006404782237403928
+Product Manager,Human Resources,3,0.0006404782237403928
+Product Manager,Information Technology,115,0.024551665243381725
+Product Manager,Management,19,0.0040563620836891546
+Product Manager,Manufacturing,7,0.0014944491887275832
+Product Manager,Marketing,454,0.09692570452604611
+Product Manager,Other,24,0.005123825789923143
+Product Manager,Product Management,595,0.12702818104184457
+Product Manager,Production,5,0.001067463706233988
+Product Manager,Project Management,29,0.006191289496157131
+Product Manager,Purchasing,2,0.0004269854824935952
+Product Manager,Research,8,0.0017079419299743809
+Product Manager,Sales,20,0.004269854824935952
+Product Manager,Strategy/Planning,8,0.0017079419299743809
+Product Manager,Supply Chain,3,0.0006404782237403928
+Product Manager,Training,1,0.0002134927412467976
+Project Manager,Accounting/Auditing,6,0.0027662517289073307
+Project Manager,Administrative,29,0.013370216689718764
+Project Manager,Advertising,14,0.006454587367450438
+Project Manager,Analyst,16,0.007376671277086215
+Project Manager,Art/Creative,4,0.0018441678192715537
+Project Manager,Business Development,27,0.012448132780082987
+Project Manager,Consulting,64,0.02950668510834486
+Project Manager,Customer Service,8,0.0036883356385431073
+Project Manager,Design,27,0.012448132780082987
+Project Manager,Distribution,5,0.002305209774089442
+Project Manager,Education,3,0.0013831258644536654
+Project Manager,Engineering,124,0.05716920239741816
+Project Manager,Finance,21,0.009681881051175657
+Project Manager,General Business,2,0.0009220839096357768
+Project Manager,Health Care Provider,7,0.003227293683725219
+Project Manager,Human Resources,9,0.004149377593360996
+Project Manager,Information Technology,1119,0.5159059474412172
+Project Manager,Legal,6,0.0027662517289073307
+Project Manager,Management,88,0.04057169202397418
+Project Manager,Manufacturing,43,0.0198248040571692
+Project Manager,Marketing,25,0.011526048870447211
+Project Manager,Other,41,0.018902720147533424
+Project Manager,Product Management,21,0.009681881051175657
+Project Manager,Production,14,0.006454587367450438
+Project Manager,Project Management,1349,0.6219455970493315
+Project Manager,Public Relations,3,0.0013831258644536654
+Project Manager,Quality Assurance,60,0.027662517289073305
+Project Manager,Research,10,0.004610419548178884
+Project Manager,Sales,20,0.009220839096357769
+Project Manager,Science,20,0.009220839096357769
+Project Manager,Strategy/Planning,21,0.009681881051175657
+Project Manager,Supply Chain,22,0.010142923005993546
+Project Manager,Training,5,0.002305209774089442
+Project Manager,Writing/Editing,3,0.0013831258644536654

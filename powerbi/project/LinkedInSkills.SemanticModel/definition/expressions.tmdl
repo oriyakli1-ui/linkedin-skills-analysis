@@ -1,0 +1,5 @@
+expression DataFolder = "C:\Users\oriya\.claude\linkedin-skills-project\out\powerbi\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 6032ac65-c1d3-40e6-8445-681dd55ea390
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,194 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "skill_scores.skill": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "skill_scores",
+			          "ConceptualProperty": "skill"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Skill": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "skill_scores.skill_demand_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "skill_scores",
+			          "ConceptualProperty": "Skill Demand %"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "skill_scores.hard_pct_1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "skill_scores",
+			          "ConceptualProperty": "Hard Pct 1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "of postings ask for it": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "skill_scores.hard_pct_2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "skill_scores",
+			          "ConceptualProperty": "Hard Pct 2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "of postings ask for it": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "skill_scores.hard_pct_3": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "skill_scores",
+			          "ConceptualProperty": "Hard Pct 3"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "of postings ask for it": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_postings.postings": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_postings",
+			          "ConceptualProperty": "Postings"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "job postings analysed for this role": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Product Manager postings analysed": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Project Manager postings analysed": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Data Analyst postings analysed": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_postings.companies": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_postings",
+			          "ConceptualProperty": "Companies"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "fact_postings.remote_share_known": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_postings",
+			          "ConceptualProperty": "Remote Share (known)"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dim_role.role": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_role",
+			          "ConceptualProperty": "role"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Role": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

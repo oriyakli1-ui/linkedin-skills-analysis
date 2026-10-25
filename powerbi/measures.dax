@@ -1,0 +1,28 @@
+// ===== Create a "Measures" table (Home > Enter data, empty) and add these =====
+
+// ---- Market overview (fact_postings) ----
+Postings = DISTINCTCOUNT ( fact_postings[job_id] )
+
+Remote Share =
+DIVIDE (
+    CALCULATE ( [Postings], fact_postings[remote_allowed] = 1 ),
+    [Postings]
+)
+
+// ---- Skills (skill_scores is pre-aggregated per role x skill) ----
+Skill Demand % = AVERAGE ( skill_scores[demand_pct] )
+
+Skill Score = AVERAGE ( skill_scores[score] )
+
+// How much more often the skill appears in this role than in the other two (e.g. 17x)
+Role Specificity = AVERAGE ( skill_scores[specificity_lift] )
+
+// ---- Hero page: "Top 3 skills for a ..." ----
+// Use skill_scores with visual-level filters: skill_type = "Hard", skill_rank = 1 / 2 / 3 (one card each).
+Dynamic Title = "Top 3 skills to become a " & SELECTEDVALUE ( dim_role[role], "..." )
+
+Demand Label = "Asked in " & FORMAT ( [Skill Demand %], "0%" ) & " of postings"
+
+Specificity Label =
+VAR s = [Role Specificity]
+RETURN IF ( ISBLANK ( s ), "", FORMAT ( s, "0.0" ) & "x more common than in the other two roles" )
