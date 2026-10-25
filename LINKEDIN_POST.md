@@ -1,6 +1,6 @@
 # LinkedIn post: final draft
 
-Fill in the two [links] before posting. Every number below comes from the final run (8,473 postings).
+Links are filled. Every number below comes from the final run (8,473 postings).
 Keep the tools line that matches what you actually published (see the two options inside the post).
 
 ---
@@ -96,8 +96,8 @@ What skill do you think is missing from the list?
 
 מגבלות שחשוב להכיר: משרות מראות מה מעסיקים מבקשים, לא מה יש לאנשים. זיהוי הכישורים מבוסס על מילות מפתח, ולכן ניסוחים חריגים עלולים להתפספס. שני מקורות הנתונים מסכימים ביניהם בצורה גבוהה (מתאם 0.98 עד 0.99).
 
-בוחרים תפקיד ורואים את הטופ 3: [קישור לדשבורד]
-הקוד והמתודולוגיה: [קישור ל-GitHub]
+בוחרים תפקיד ורואים את הטופ 3: https://oriyakli1-ui.github.io/linkedin-skills-analysis/
+הקוד והמתודולוגיה: https://github.com/oriyakli1-ui/linkedin-skills-analysis
 
 איזה כישור לדעתך חסר ברשימה?
 
